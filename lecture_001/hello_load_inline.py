@@ -3,7 +3,7 @@ from torch.utils.cpp_extension import load_inline
 
 cpp_source = """
 std::string hello_world() {
-  return "Hello World!";
+  return "Hello Tornike!";
 }
 """
 
