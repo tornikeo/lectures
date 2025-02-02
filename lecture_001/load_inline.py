@@ -3,8 +3,11 @@
 
 import torch
 from torch.utils.cpp_extension import load_inline
-
-# Define the CUDA kernel and C++ wrapper
+## Compile only for your own GPU:
+# 1. Do nvidia-smi -L
+# 2. Navigate to https://en.wikipedia.org/wiki/CUDA#GPUs_supported and ctrl+f the name (e.g. "GTX 1050"), copy the first value (e.g 6.1)
+# 3. TORCH_CUDA_ARCH_LIST='6.1' python load_inline.py
+# Should run
 cuda_source = '''
 __global__ void square_matrix_kernel(const float* matrix, float* result, int width, int height) {
     int row = blockIdx.y * blockDim.y + threadIdx.y;
